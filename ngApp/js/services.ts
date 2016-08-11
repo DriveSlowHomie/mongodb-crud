@@ -10,6 +10,10 @@ namespace app.Services {
     public save(movie) {
       return this.MovieResource.save(movie).$promise;
     }
+
+    public getAll(){
+      return this.MovieResource.query()
+    }
   }
   angular.module('app').service('movieService', MovieService);
 

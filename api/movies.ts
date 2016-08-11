@@ -46,7 +46,9 @@ let movieId = movies.length;
 
 /* GET movies */
 router.get('/movies', function(req, res, next) {
-  res.json(movies);
+  Movie.find({date_deleted: null}).then((movies) => {
+    res.json(movies);
+  })
 });
 
 /* GET movie by id */

@@ -1,8 +1,9 @@
 namespace app.Controllers {
   export class HomeController {
+    public movies;
 
-    constructor() {
-
+    constructor(private movieService: app.Services.MovieService) {
+      this.movies = this.movieService.getAll();
     }
   }
 
