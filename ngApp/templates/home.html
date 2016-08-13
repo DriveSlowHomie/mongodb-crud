@@ -3,6 +3,7 @@
 <ul>
   <li ng-repeat="movie in vm.movies">
     <b>title</b>: {{movie.title}}, <b>Genre</b>: {{movie.genre}}
+    <a href="/updateMovie/{{movie._id}}">Edit</a>
   </li>
 </ul>
 
