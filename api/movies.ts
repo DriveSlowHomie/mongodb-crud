@@ -80,7 +80,7 @@ router.post('/movies', function(req, res, next) {
     }
    })
   }
-  
+
   else{
     Movie.findByIdAndUpdate(req.body.id, {$set: {title: req.body.title, genre: req.body.genre}}, (err, res) => {
       if(err) {
@@ -97,15 +97,16 @@ router.post('/movies', function(req, res, next) {
 
 /* delete movie by id */
 router.delete('/movies/:id', function(req, res, next) {
-  let id = parseInt(req.params['id']);
-  if (!findMovie(id)) {
-    res.sendStatus(404);
-  } else {
-    movies = movies.filter((movie)=> {
-      return movie.id != id;
-    });
-    res.sendStatus(200);
-  }
+  let id = req.params['id'];
+  Movie.findByIdAndUpdate(id, { $set: {date_deleted: new Date()}}, (err, res) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
+  })
+  res.sendStatus(200);
+
 });
 
 /* find matching movies */

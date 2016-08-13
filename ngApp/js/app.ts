@@ -13,13 +13,18 @@ namespace app {
       controllerAs: 'vm'
     }).state('AddMovie', {
       url: '/addMovie',
-      templateUrl: '/templates/AddMovie.html',
+      templateUrl: '/templates/addMovie.html',
       controller: app.Controllers.AddMovieController,
       controllerAs: 'vm'
     }).state('UpdateMovie', {
       url: '/updateMovie/:id',
-      templateUrl: '/templates/UpdateMovie.html',
+      templateUrl: '/templates/updateMovie.html',
       controller: app.Controllers.AddMovieController,
+      controllerAs: 'vm'
+    }).state('DeleteMovie', {
+      url: '/deleteMovie/:id',
+      templateUrl: '/templates/deleteMovie.html',
+      controller: app.Controllers.DeleteMovieController,
       controllerAs: 'vm'
     });
 
