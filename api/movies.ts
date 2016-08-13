@@ -2,10 +2,13 @@ import express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
+
+
 //model movie
 let Movie = mongoose.model('Movie', {
   title: String,
   genre: String,
+  owner: String,
   date_created: Date,
   date_deleted: {
     type: Date,
@@ -45,30 +48,24 @@ let movies = [
 let movieId = movies.length;
 
 /* GET movies */
-router.get('/movies', function(req, res, next) {
-  Movie.find({date_deleted: null}).then((movies) => {
+router.get('/movies/:id', function(req, res, next) {
+  let id = req.params['id'];
+
+  Movie.find({date_deleted: null, owner: id}).then((movies) => {
     res.json(movies);
   })
 });
 
-/* GET movie by id */
-router.get('/movies/:id', function(req, res, next) {
-  let id = parseInt(req.params['id']);
-  let movie = findMovie(id);
-  if (movie) {
-    res.json(movie);
-  } else {
-    res.sendStatus(404);
-  }
-});
+
 
 /* Post to create or update movie */
 router.post('/movies', function(req, res, next) {
+  console.log(req.body.user);
   if(req.body.id === undefined){
-
     let new_movie = new Movie({
       title: req.body.title,
       genre: req.body.genre,
+      owner: req.body.user,
       date_created: new Date()
     });
 
