@@ -37,7 +37,6 @@ namespace app.Services {
     }
   }
 
-  //UserService
   angular.module('app').service('movieService', MovieService);
   angular.module('app').service('userService', UserService);
 

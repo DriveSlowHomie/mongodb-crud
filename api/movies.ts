@@ -36,16 +36,16 @@ let Movie = mongoose.model('Movie', {
 
 
 // create static list of movies
-let movies = [
-   {id:1, title:"Star Wars", director:"Lucas" },
-   {id:2, title:"The Martian", director:"Scott" },
-   {id:3, title:"Ex Machina", director:"Garland" },
-   {id:4, title:"Superman", director:"Donner" },
-   {id:5, title:"Shrek", director:"Adamson" }
-
-];
-// unique movie id
-let movieId = movies.length;
+// let movies = [
+//    {id:1, title:"Star Wars", director:"Lucas" },
+//    {id:2, title:"The Martian", director:"Scott" },
+//    {id:3, title:"Ex Machina", director:"Garland" },
+//    {id:4, title:"Superman", director:"Donner" },
+//    {id:5, title:"Shrek", director:"Adamson" }
+//
+// ];
+// // unique movie id
+// let movieId = movies.length;
 
 /* GET movies */
 router.get('/movies/:id', function(req, res, next) {
@@ -107,19 +107,19 @@ router.delete('/movies/:id', function(req, res, next) {
 });
 
 /* find matching movies */
-router.get('/movies/search/:search', function(req, res, next) {
-    let search = req.params['search'];
-    let matches = movies.filter((movie)=>{
-      return movie.title.indexOf(search) == 0;
-    });
-    res.json(matches);
-});
-
-function findMovie(id:number) {
-  let matches = movies.filter((movie) => {
-    return movie.id == id;
-  });
-  return matches.length ? matches[0] : null;
-}
+// router.get('/movies/search/:search', function(req, res, next) {
+//     let search = req.params['search'];
+//     let matches = movies.filter((movie)=>{
+//       return movie.title.indexOf(search) == 0;
+//     });
+//     res.json(matches);
+// });
+//
+// function findMovie(id:number) {
+//   let matches = movies.filter((movie) => {
+//     return movie.id == id;
+//   });
+//   return matches.length ? matches[0] : null;
+// }
 
 export = router;
